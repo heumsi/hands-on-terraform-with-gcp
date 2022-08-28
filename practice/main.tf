@@ -42,10 +42,18 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.hotwg_asne3_prod_1.id
+    access_config {
+      nat_ip = google_compute_address.hotwg_asne3_prod_1.address
+    }
   }
 
   service_account {
     email  = google_service_account.gce.email
     scopes = ["cloud-platform"]
   }
+}
+
+resource "google_compute_address" "hotwg_asne3_prod_1" {
+  name = "hotwg-asne3-prod-1"
+  region = "asia-northeast3"
 }
