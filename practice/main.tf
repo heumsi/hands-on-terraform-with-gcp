@@ -53,6 +53,10 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
   }
 
   tags = ["allow-http", "allow-ssh"]
+
+  metadata = {
+    ssh-keys = "default:${file(var.gce_ssh_pub_key_file)}"
+  }
 }
 
 resource "google_compute_address" "hotwg_asne3_prod_1" {
