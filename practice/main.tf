@@ -51,9 +51,39 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
     email  = google_service_account.gce.email
     scopes = ["cloud-platform"]
   }
+
+  tags = ["allow-http", "allow-ssh"]
 }
 
 resource "google_compute_address" "hotwg_asne3_prod_1" {
   name   = "hotwg-asne3-prod-1"
   region = "asia-northeast3"
+}
+
+resource "google_compute_firewall" "hotwg_prod_1_allow_ssh" {
+  name        = "hotwg-prod-1-allow-ssh"
+  network     = google_compute_network.hotwg_prod_1.name
+  description = "Allow ssh from anywhere"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["allow-ssh"]
+}
+
+resource "google_compute_firewall" "hotwg_prod_1_allow_http" {
+  name        = "hotwg-prod-1-allow-http"
+  network     = google_compute_network.hotwg_prod_1.name
+  description = "Allow http from anywhere"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["allow-http"]
 }
