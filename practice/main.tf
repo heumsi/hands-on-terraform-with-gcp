@@ -54,6 +54,6 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
 }
 
 resource "google_compute_address" "hotwg_asne3_prod_1" {
-  name = "hotwg-asne3-prod-1"
+  name   = "hotwg-asne3-prod-1"
   region = "asia-northeast3"
 }
