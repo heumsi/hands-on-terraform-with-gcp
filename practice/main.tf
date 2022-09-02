@@ -5,6 +5,10 @@ terraform {
       version = "4.33.0"
     }
   }
+
+  backend "gcs" {
+    bucket = "hotwg-asne3-tfstate-prod-1"
+  }
 }
 
 provider "google" {
@@ -29,37 +33,6 @@ module "network" {
   source = "./modules/network"
 }
 
-moved {
-  from = google_compute_firewall.hotwg_prod_1_allow_http
-  to   = module.network.google_compute_firewall.hotwg_prod_1_allow_http
-}
-
-moved {
-  from = google_compute_firewall.hotwg_prod_1_allow_ssh
-  to   = module.network.google_compute_firewall.hotwg_prod_1_allow_ssh
-}
-
-moved {
-  from = google_compute_subnetwork.hotwg_asne3_prod_1
-  to   = module.network.google_compute_subnetwork.hotwg_asne3_prod_1
-}
-
-moved {
-  from = google_service_account.gce
-  to   = module.iam.google_service_account.gce
-}
-
-moved {
-  from = google_compute_network.hotwg_prod_1
-  to   = module.network.google_compute_network.hotwg_prod_1
-}
-
-moved {
-  from = google_compute_instance.hotwg_asne3_prod_1
-  to   = module.compute.google_compute_instance.hotwg_asne3_prod_1
-}
-
-moved {
-  from = google_compute_address.hotwg_asne3_prod_1
-  to   = module.network.google_compute_address.hotwg_asne3_prod_1
+module "storage" {
+  source = "./modules/storage"
 }
