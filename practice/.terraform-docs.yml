@@ -1,7 +1,7 @@
 formatter: "markdown table"
 
-recursive:
-  enabled: true
+# recursive:
+#   enabled: true
 
 output:
   file: README.md
