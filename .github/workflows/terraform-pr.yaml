@@ -166,7 +166,7 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=hide-and-new
-  pluralithsss:
+  pluralith:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -220,3 +220,5 @@ jobs:
         uses: Pluralith/actions/comment@v1.1.0
         with:
           terraform-path: .
+          path: practice/comment.md
+          behavior: hide-and-new
