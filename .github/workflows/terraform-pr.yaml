@@ -194,7 +194,6 @@ jobs:
 
       - name: Setup Infracost
         uses: infracost/actions/setup@v2
-        working-directory: ${{ env.working-directory }}
         # See https://github.com/infracost/actions/tree/master/setup for other inputs
         # If you can't use this action, see Docker images in https://infracost.io/cicd
         with:
@@ -203,7 +202,6 @@ jobs:
       # Set up and authenticate Pluralith
       - name: Pluralith Init
         uses: Pluralith/actions/init@v1.1.0
-        working-directory: ${{ env.working-directory }}
         with:
           terraform-path: ${{ env.working-directory }}
           api-key: ${{ secrets.PLURALITH_API_KEY }}
@@ -212,7 +210,6 @@ jobs:
       # Run Pluralith to generate an infrastructure diagram and comment body
       - name: Pluralith Run
         uses: Pluralith/actions/run@v1.1.0
-        working-directory: ${{ env.working-directory }}
         with:
           terraform-path: ${{ env.working-directory }}
           show-changes: true
@@ -222,7 +219,6 @@ jobs:
       # Post the generated diagram as a GitHub comment
       - name: Pluralith Comment
         uses: Pluralith/actions/comment@v1.1.0
-        working-directory: ${{ env.working-directory }}
         with:
           terraform-path: ${{ env.working-directory }}
           behavior: hide-and-new
