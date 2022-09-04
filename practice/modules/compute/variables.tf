@@ -1,7 +1,3 @@
-variable "ssh_pub_key_file" {
-  description = "gce public key used by ssh file path"
-}
-
 variable "service_account" {
   description = "terraform google_service_account resource"
 }

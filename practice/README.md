@@ -18,7 +18,5 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_credentials_file"></a> [credentials\_file](#input\_credentials\_file) | gcp serviceaccount used by terraform json file path | `string` | n/a | yes |
-| <a name="input_gce_ssh_pub_key_file"></a> [gce\_ssh\_pub\_key\_file](#input\_gce\_ssh\_pub\_key\_file) | gce public key used by ssh file path | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | gcp project id | `string` | `"storied-channel-359115"` | no |
 <!-- END_TF_DOCS -->

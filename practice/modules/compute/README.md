@@ -5,7 +5,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | n/a |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.34.0 |
 
 ## Resources
 
@@ -19,6 +19,5 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_nat_ip"></a> [nat\_ip](#input\_nat\_ip) | terraform google\_compute\_address resource | `any` | n/a | yes |
 | <a name="input_service_account"></a> [service\_account](#input\_service\_account) | terraform google\_service\_account resource | `any` | n/a | yes |
-| <a name="input_ssh_pub_key_file"></a> [ssh\_pub\_key\_file](#input\_ssh\_pub\_key\_file) | gce public key used by ssh file path | `any` | n/a | yes |
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | terraform google\_compute\_subnetwortk resource | `any` | n/a | yes |
 <!-- END_TF_DOCS -->
