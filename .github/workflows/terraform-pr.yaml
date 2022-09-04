@@ -168,9 +168,6 @@ jobs:
                                      --behavior=hide-and-new
   pluralith:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./practice
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -184,12 +181,16 @@ jobs:
           terraform_wrapper: false # This is recommended so the `terraform show` command outputs valid JSON
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run:
+          working-directory: practice
 
       # Init Terraform project
       - name: Terraform Init
         run: terraform init
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run:
+          working-directory: practice
 
       - name: Setup Infracost
         uses: infracost/actions/setup@v2
@@ -197,12 +198,14 @@ jobs:
         # If you can't use this action, see Docker images in https://infracost.io/cicd
         with:
           api-key: ${{ secrets.INFRACOST_API_KEY }}
+        run:
+          working-directory: practice
       
       # Set up and authenticate Pluralith
       - name: Pluralith Init
         uses: Pluralith/actions/init@v1.1.0
         with:
-          terraform-path: .
+          terraform-path: practice
           api-key: ${{ secrets.PLURALITH_API_KEY }}
           project-id: ${{ secrets.PLURALITH_PROJECT_ID }}
 
@@ -210,7 +213,7 @@ jobs:
       - name: Pluralith Run
         uses: Pluralith/actions/run@v1.1.0
         with:
-          terraform-path: .
+          terraform-path: practice
           show-changes: true
           show-drift: true
           show-costs: true # Requires Infracost to be set up in your pipeline
@@ -219,6 +222,5 @@ jobs:
       - name: Pluralith Comment
         uses: Pluralith/actions/comment@v1.1.0
         with:
-          terraform-path: .
-          path: practice/comment.md
+          terraform-path: practice
           behavior: hide-and-new
