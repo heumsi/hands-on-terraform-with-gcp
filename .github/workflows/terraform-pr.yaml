@@ -166,7 +166,7 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=hide-and-new
-  pluralith:
+  pluralithsss:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -202,6 +202,7 @@ jobs:
       - name: Pluralith Init
         uses: Pluralith/actions/init@v1.1.0
         with:
+          terraform-path: .
           api-key: ${{ secrets.PLURALITH_API_KEY }}
           project-id: ${{ secrets.PLURALITH_PROJECT_ID }}
 
@@ -209,6 +210,7 @@ jobs:
       - name: Pluralith Run
         uses: Pluralith/actions/run@v1.1.0
         with:
+          terraform-path: .
           show-changes: true
           show-drift: true
           show-costs: true # Requires Infracost to be set up in your pipeline
@@ -216,3 +218,5 @@ jobs:
       # Post the generated diagram as a GitHub comment
       - name: Pluralith Comment
         uses: Pluralith/actions/comment@v1.1.0
+        with:
+          terraform-path: .
