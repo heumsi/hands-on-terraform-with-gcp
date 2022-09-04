@@ -179,7 +179,6 @@ jobs:
       # Set up Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-        working-directory: ${{ env.working-directory }}
         with:
           terraform_wrapper: false # This is recommended so the `terraform show` command outputs valid JSON
         env:
