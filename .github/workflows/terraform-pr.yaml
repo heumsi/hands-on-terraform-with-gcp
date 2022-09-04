@@ -168,6 +168,8 @@ jobs:
                                      --behavior=hide-and-new
   pluralith:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./practice
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -177,22 +179,21 @@ jobs:
       # Set up Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
+        working-directory: ${{ env.working-directory }}
         with:
           terraform_wrapper: false # This is recommended so the `terraform show` command outputs valid JSON
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        run:
-          working-directory: practice
 
       # Init Terraform project
       - name: Terraform Init
+        working-directory: ${{ env.working-directory }}
         run: terraform init
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        run:
-          working-directory: practice
 
       - name: Setup Infracost
+        working-directory: ${{ env.working-directory }}
         uses: infracost/actions/setup@v2
         # See https://github.com/infracost/actions/tree/master/setup for other inputs
         # If you can't use this action, see Docker images in https://infracost.io/cicd
@@ -205,7 +206,7 @@ jobs:
       - name: Pluralith Init
         uses: Pluralith/actions/init@v1.1.0
         with:
-          terraform-path: practice
+          terraform-path: ${{ env.working-directory }}
           api-key: ${{ secrets.PLURALITH_API_KEY }}
           project-id: ${{ secrets.PLURALITH_PROJECT_ID }}
 
@@ -213,7 +214,7 @@ jobs:
       - name: Pluralith Run
         uses: Pluralith/actions/run@v1.1.0
         with:
-          terraform-path: practice
+          terraform-path: ${{ env.working-directory }}
           show-changes: true
           show-drift: true
           show-costs: true # Requires Infracost to be set up in your pipeline
@@ -222,5 +223,5 @@ jobs:
       - name: Pluralith Comment
         uses: Pluralith/actions/comment@v1.1.0
         with:
-          terraform-path: practice
+          terraform-path: ${{ env.working-directory }}
           behavior: hide-and-new
