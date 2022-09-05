@@ -212,7 +212,6 @@ jobs:
       - name: Pluralith Run
         uses: Pluralith/actions/run@v1.1.0
         with:
-          title: \#${{ github.event.number }}
           terraform-path: ${{ env.working-directory }}
           show-changes: true
           show-drift: true
