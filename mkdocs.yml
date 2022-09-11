@@ -1,4 +1,58 @@
 site_name: Hands on terraform with GCP
 
 theme:
+  logo: assets/logo.png
   name: material
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+repo_url: https://github.com/heumsi/hands-on-terraform-with-gcp
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+
+nav:
+  - "개요": "00-overview"
+  - "시작하기":
+    - "개요": "01-getting-started/00-overview.md"
+    - "프로젝트 초기화하기": "01-getting-started/01-init-project.md"
+    - "VPC Network 생성하기": "01-getting-started/02-create-vpc-network.md"
+    - "Subnet Network 생성하기": "01-getting-started/03-create-subnet-network.md"
+    - "GCE 인스턴스 생성하기": "01-getting-started/04-create-gce.md"
+    - "External Static IP 생성하기": "01-getting-started/05-create-external-static-ip.md"
+    - "Firewall 생성하기": "01-getting-started/06-create-firewalls.md"
+    - "SSH로 접속하기": "01-getting-started/07-add-ssh-key.md"
+  - "리팩토링 하기":
+    - "개요": "02-refactoring/00-overview.md"
+    - "프로젝트 구조화히기": "02-refactoring/01-structure-project.md"
+    - "Remote Backend 설정하기": "02-refactoring/02-set-remote-backend.md"
+    - "Variables에 타입, 설명 추가하기": "02-refactoring/03-add-type-and-desc-to-variables.md"
+  - "운영 및 자동화하기":
+    - "개요": "03-operation/00-overview.md"
+    - "Git 기반":
+      - "개요": "03-operation/01-git-based/00-overview.md"
+      - ".gitignore 추가하기": "03-operation/01-git-based/01-add-gitignore.md"
+      - "코드 Valdiation 하기": "03-operation/01-git-based/02-validate-codes.md"
+      - "코드 Formatting 하기": "03-operation/01-git-based/03-format-codes.md"
+      - "코드 Linting 하기": "03-operation/01-git-based/04-lint-codes.md"
+      - "README.md 추가하기": "03-operation/01-git-based/05-add-readme.md"
