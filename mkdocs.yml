@@ -27,7 +27,11 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.details
 
@@ -56,3 +60,13 @@ nav:
       - "코드 Formatting 하기": "03-operation/01-git-based/03-format-codes.md"
       - "코드 Linting 하기": "03-operation/01-git-based/04-lint-codes.md"
       - "README.md 추가하기": "03-operation/01-git-based/05-add-readme.md"
+    - "Github 기반":
+      - "개요": "03-operation/02-github-based/00-overview.md"
+      - "작업 흐름": "03-operation/02-github-based/01-workflow.md"
+      - "사전 리팩토링": "03-operation/02-github-based/02-refactoring.md"
+      - "PR 시 Actions": 
+        - "개요": "03-operation/02-github-based/03-actions-if-pr/00-overview.md"
+        - "기본 액션들": "03-operation/02-github-based/03-actions-if-pr/01-pre-commit-actions.md"
+        - "추가 예상 비용 확인하기": "03-operation/02-github-based/03-actions-if-pr/02-estimate-costs.md"
+        - "리소스 시각화 하기": "03-operation/02-github-based/03-actions-if-pr/03-visualize-resources.md"
+      - "Push 시 Actions": "03-operation/02-github-based/04-actions-if-push.md"
