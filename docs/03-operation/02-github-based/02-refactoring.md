@@ -1,4 +1,14 @@
+# 리팩토링
 
+Github Action을 추가하기 전 기존 코드의 일부를 조금 수정하려고 합니다.
+
+수정하려고 하는 부분은 Terraform Variable과 관련된 부분입니다.
+앞으로 Github의 Secret에 Terraform Variable을 저장하고, Github Action 파이프라인에서는 이 Secret에서 필요한 Varaible을 가져오게 됩니다.
+
+이를 위해 일부 파일의 코드들을 다음처럼 수정합니다.
+
+`main.tf` 에서는 GCP에 접근하는 ServiceAccount Credentials을 지정하는 부분을 삭제합니다.
+Credentials는 앞으로 환경 변수 지정을 통해 가져올 것입니다.
 
 ```tf title="main.tf"
 terraform {
@@ -39,7 +49,7 @@ module "storage" {
 }
 ```
 
-
+`variables.tf` 에서도 꼭 필요한 Variable이 아닌 것들을 삭제합니다.
 
 ```tf title="variables.tf"
 variable "project" {
@@ -49,11 +59,14 @@ variable "project" {
 }
 ```
 
+Variable 주입은 Github Secret을 통해서 할 것이기 때문에 `variables.tfvars` 은 이제 필요치 않습니다.
+이 파일을 삭제합니다.
 
 ```
 $ rm variables.tfvars
 ```
 
+`modules/compute/main.tf` 에서 `ssh-keys` 도 Variable을 사용하지 않고 직접 입력합니다.
 
 ```tf title="modules/compute/main.tf"
 resource "google_compute_instance" "hotwg_asne3_prod_1" {
@@ -86,6 +99,7 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
   }
 ```
 
+`modules/compute/variables.tf` 에서도 꼭 필요한 Variable만 남깁니다.
 
 ```tf title="modules/compute/variables.tf"
 variable "service_account" {
@@ -101,6 +115,7 @@ variable "nat_ip" {
 }
 ```
 
+변경되는 플랜을 확인해보면 다음과 같습니다.
 
 ```
 $ terraform plan
@@ -132,7 +147,8 @@ Terraform will perform the following actions:
 Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 
+이제 변경 사항을 적용합니다.
+
 ```
 $ terraform apply
 ```
-
