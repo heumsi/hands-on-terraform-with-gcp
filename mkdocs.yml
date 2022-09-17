@@ -36,7 +36,7 @@ markdown_extensions:
   - pymdownx.details
 
 nav:
-  - "개요": "00-overview"
+  - "들어가며": "index.md"
   - "시작하기":
     - "개요": "01-getting-started/00-overview.md"
     - "프로젝트 초기화하기": "01-getting-started/01-init-project.md"
