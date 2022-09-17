@@ -66,7 +66,7 @@ nav:
       - "사전 리팩토링": "03-operation/02-github-based/02-refactoring.md"
       - "PR 시 Actions": 
         - "개요": "03-operation/02-github-based/03-actions-if-pr/00-overview.md"
-        - "기본 액션들": "03-operation/02-github-based/03-actions-if-pr/01-pre-commit-actions.md"
+        - "Pre-commit 액션": "03-operation/02-github-based/03-actions-if-pr/01-pre-commit-actions.md"
         - "추가 예상 비용 확인하기": "03-operation/02-github-based/03-actions-if-pr/02-estimate-costs.md"
-        - "리소스 시각화 하기": "03-operation/02-github-based/03-actions-if-pr/03-visualize-resources.md"
+        - "리소스 시각화하기": "03-operation/02-github-based/03-actions-if-pr/03-visualize-resources.md"
       - "Push 시 Actions": "03-operation/02-github-based/04-actions-if-push.md"
