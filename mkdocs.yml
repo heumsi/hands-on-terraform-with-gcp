@@ -30,7 +30,6 @@ theme:
 
 plugins:
   - social:
-      cards: !ENV [CARDS, false]
       cards_color:
         fill: "#000000" 
         text: "#FFFFFF"
