@@ -1,4 +1,6 @@
-site_name: Hands on terraform with GCP
+site_name: Hands on Terraform with GCP
+
+copyright: Copyright &copy; heumsi
 
 theme:
   logo: assets/logo.png
@@ -7,7 +9,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: black
+      primary: white
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
@@ -19,6 +21,27 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
+  features:
+    - search.suggest
+    - search.highlight
+
+plugins:
+  # - social
+  # - git-revision-date-localized
+
+extra:
+  analytics:
+    provider: google
+    property: G-6FPTB6BYPR
+  generator: false
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/heumsi
+    - icon: fontawesome/brands/linkedin 
+      link: https://www.linkedin.com/in/siheum-jeon-04222a1b3/
+    - icon: fontawesome/brands/facebook 
+      link: https://www.facebook.com/heumsi/
+    
 
 repo_url: https://github.com/heumsi/hands-on-terraform-with-gcp
 
