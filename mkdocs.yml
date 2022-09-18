@@ -30,7 +30,10 @@ theme:
 
 plugins:
   - social
-  # - git-revision-date-localized
+      cards: !ENV [CARDS, false]
+      cards_color:
+        fill: "#000000" 
+        text: "#FFFFFF"
 
 extra:
   analytics:
