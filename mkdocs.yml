@@ -29,7 +29,7 @@ theme:
     - search.highlight
 
 plugins:
-  - social
+  - social:
       cards: !ENV [CARDS, false]
       cards_color:
         fill: "#000000" 
