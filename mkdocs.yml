@@ -33,6 +33,7 @@ plugins:
       cards_color:
         fill: "#000000" 
         text: "#FFFFFF"
+      cards_font: Noto Sans KR
 
 extra:
   analytics:
