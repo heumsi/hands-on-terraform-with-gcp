@@ -18,8 +18,8 @@ provider "google" {
 module "compute" {
   source = "./modules/compute"
 
-  subnetwork      = module.network.google_compute_subnetwork["hotwg_asne3_prod_1"]
-  nat_ip          = module.network.google_compute_address["hotwg_asne3_prod_1"]
+  subnetwork = module.network.google_compute_subnetwork["hotwg_asne3_prod_1"]
+  # nat_ip          = module.network.google_compute_address["hotwg_asne3_prod_1"]
   service_account = module.iam.service_accounts["gce"]
 }
 
