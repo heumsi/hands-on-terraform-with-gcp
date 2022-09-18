@@ -1,19 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.34.0 |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [google_compute_instance.hotwg_asne3_prod_1](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance) | resource |
-| [google_compute_instance.hotwg_asne3_prod_2](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance) | resource |
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |

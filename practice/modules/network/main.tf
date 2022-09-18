@@ -42,7 +42,7 @@ resource "google_compute_firewall" "hotwg_prod_1_allow_http" {
 }
 
 # google_compute_address
-resource "google_compute_address" "hotwg_asne3_prod_1" {
-  name   = "hotwg-asne3-prod-1"
-  region = "asia-northeast3"
-}
+# resource "google_compute_address" "hotwg_asne3_prod_1" {
+#   name   = "hotwg-asne3-prod-1"
+#   region = "asia-northeast3"
+# }
