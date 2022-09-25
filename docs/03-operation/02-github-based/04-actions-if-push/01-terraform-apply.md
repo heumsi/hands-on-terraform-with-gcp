@@ -1,11 +1,11 @@
-# Push 시 Actions
+# Terraform 리소스 적용하기
 
 PR에서 변경사항을 확인하고 리뷰를 거쳐 `main` 브랜치로 머지가 되면 이제 `terraform apply` 가 실행되어야 합니다.
 이 작업을 Github Action으로 구현해봅시다.
 
 ## yaml 작성하기
 
-프로젝트 최상단에서 다음처럼 `.github/workflows/terraform-push.yaml` 를 만든 뒤, 다음처럼 작성합니다.
+`.github/workflows/terraform-push.yaml` 에 다음처럼 작성합니다.
 
 ```yaml title=".github/workflows/terraform-push.yaml"
 on:
@@ -186,8 +186,6 @@ $ git push origin test3
 
 이제 PR을 생성한 후, `main` 브랜치에 머지하면 다음처럼 Action이 성공하고, 리소스가 잘 추가된 것을 확인할 수 있습니다.
 
-![](./img/01.png)
+![01.png](./img/01.png)
 
-![](./img/02.png)
-
-![](2022-09-17-16-09-58.png)
+![02.png](./img/02.png)
