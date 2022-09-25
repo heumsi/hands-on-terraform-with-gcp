@@ -6,6 +6,6 @@ variable "subnetwork" {
   description = "terraform google_compute_subnetwortk resource"
 }
 
-# variable "nat_ip" {
-#   description = "terraform google_compute_address resource"
-# }
+variable "nat_ip" {
+  description = "terraform google_compute_address resource"
+}

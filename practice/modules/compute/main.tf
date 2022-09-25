@@ -11,9 +11,9 @@ resource "google_compute_instance" "hotwg_asne3_prod_1" {
 
   network_interface {
     subnetwork = var.subnetwork.id
-    # access_config {
-    #   nat_ip = var.nat_ip.address
-    # }
+    access_config {
+      nat_ip = var.nat_ip.address
+    }
   }
 
   service_account {
