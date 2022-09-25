@@ -47,3 +47,57 @@ jobs:
       run: terraform apply -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+  pluralith:
+    needs: terraform-push
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./practice
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      # Set up Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false # This is recommended so the `terraform show` command outputs valid JSON
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      # Init Terraform project
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ${{ env.working-directory }}
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Setup Infracost
+        uses: infracost/actions/setup@v2
+        # See https://github.com/infracost/actions/tree/master/setup for other inputs
+        # If you can't use this action, see Docker images in https://infracost.io/cicd
+        with:
+          api-key: ${{ secrets.INFRACOST_API_KEY }}
+
+      # Set up and authenticate Pluralith
+      - name: Pluralith Init
+        uses: Pluralith/actions/init@v1.1.0
+        with:
+          terraform-path: ${{ env.working-directory }}
+          api-key: ${{ secrets.PLURALITH_API_KEY }}
+          project-id: ${{ secrets.PLURALITH_PROJECT_ID }}
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      # Run Pluralith to generate an infrastructure diagram and comment body
+      - name: Pluralith Run
+        uses: Pluralith/actions/run@v1.1.0
+        with:
+          terraform-path: ${{ env.working-directory }}
+          show-changes: true
+          show-drift: true
+          show-costs: true # Requires Infracost to be set up in your pipeline
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
