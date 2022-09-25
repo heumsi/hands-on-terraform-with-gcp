@@ -20,3 +20,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_project"></a> [project](#input\_project) | gcp project id | `string` | `"storied-channel-359115"` | no |
 <!-- END_TF_DOCS -->
+
+## Infrastructure Diagram
+
+[![Pluralith Run Status](https://api.pluralith.com/v1/docs/146536597/status)](https://pluralith.com)<br></br>[![Pluralith Last Diagram](https://api.pluralith.com/v1/docs/146536597/diagram)](https://app.pluralith.com/#/orgs/902382498/projects/146536597/runs)
