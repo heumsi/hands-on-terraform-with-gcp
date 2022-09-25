@@ -34,6 +34,7 @@ plugins:
         fill: "#000000" 
         text: "#FFFFFF"
       cards_font: Noto Sans KR
+  - glightbox
 
 extra:
   analytics:
