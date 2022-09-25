@@ -97,7 +97,7 @@ nav:
         - "개요": "03-operation/02-github-based/03-actions-if-pr/00-overview.md"
         - "Pre-commit 액션": "03-operation/02-github-based/03-actions-if-pr/01-pre-commit-actions.md"
         - "추가 예상 비용 확인하기": "03-operation/02-github-based/03-actions-if-pr/02-estimate-costs.md"
-        - "리소스 시각화하기": "03-operation/02-github-based/03-actions-if-pr/03-visualize-resources.md"
+        - "변경되는 리소스 시각화하기": "03-operation/02-github-based/03-actions-if-pr/03-visualize-modified-resources.md"
       - "Push 시 Actions": "03-operation/02-github-based/04-actions-if-push.md"
   - "나가며": "outro.md"
   
